@@ -2,7 +2,7 @@ function Header() {
 
     return (
         <header>
-            <h1>Welcome to ThoughtBubble</h1>
+            <h1>ThoughtBubble</h1>
         </header>
     )
 }

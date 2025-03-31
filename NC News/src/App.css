@@ -41,24 +41,71 @@
   color: #888;
 } */
 
-.articles-titles{
-  display: block;
+body {
+  color: white;
+  background-color: rgb(41, 41, 41);
+}
+
+
+/* HOME PAGE */
+
+h2 {
+  display: inline-flex;
+  width: fit-content;
+  justify-content: center;
+  margin: 10px;
+  text-align: center;
+}
+
+article.topic {
+  margin: 0;
+
+}
+.article-titles {
+  padding-bottom: 20px;
+
+}
+
+/* NAVBAR */
+
+.nav-list {
+  display: inline-flex;
+  list-style: none;
+  align-items: center;
+  border: 2px solid;
+  justify-content: center;
+  margin-left: 30px;
+  margin: 3rem;
+  padding: 0;
+  width: fit-content;
+}
+
+li {
+  margin: 20px;
+  align-items: center;
+}
+
+
+/* ARTICLE LIST */
+
+.card-header {
+  padding-bottom: 0;
+  background-color: rgb(255, 255, 255);
+  color: black;
+}
+
+section > .articles-titles{
+  display: flex;
+  width: fit-content;
   justify-content: center; /* center horizontally */
   align-items: center; /* center vertically (if container has height) */
   height: 10vh; 
   border: 2px solid;
 }
 
-.nav-list {
-  border: 2px solid;
-}
-
 .article-list-item {
   list-style: none;
-}
-
-.nav-list {
-  list-style: none
+  padding: 20px;
 }
 
 .parent {
@@ -69,18 +116,59 @@
 }
 
 .article-card {
-  display: display flex;
-  justify-content: center; /* center horizontally */
-  align-items: center; /* center vertically (if container has height) */
-  height: 30vh; 
-  border: 2px solid;
+  color: rgb(255, 255, 255);
+  margin: 20px;
+  padding: 10px;
+  display: inline-flexbox; 
+  justify-content: center;  
+  align-items: center; 
+  width: 50rem;
+  height: 50vh; 
+  border-radius: 20px;
+  box-shadow: 1px 0px 10px black;
 }
 
-.article-img {
-  padding: 10px;
-  display:list-item
+
+article > .article-img {
+  display:flex;
+  justify-self: start;
+  width: 24px;
+  margin-right: 7px;
 }
 
 .article-topic {
   padding: 10px;
+}
+
+
+/* SINGLE ARTICLE */
+
+.single-article {
+display: flexbox;
+justify-items: center;
+border: 2px solid;
+}
+
+.article-img-container {
+  display: inline-flex;
+  width: 125px;
+  height: 168px;
+  overflow: hidden;
+  border-radius: 5px;
+  flex-shrink: 0;
+  margin-right: 19px;
+}
+
+.full-article-title {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+
+/* COMMENTS */
+
+h3 {
+  display: flex;
+  justify-content: center;
+  border: 2px solid;
 }
