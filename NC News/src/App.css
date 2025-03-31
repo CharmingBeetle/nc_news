@@ -4,7 +4,7 @@
   padding: 2rem;
   text-align: center;
 }
-
+/* 
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -39,4 +39,48 @@
 
 .read-the-docs {
   color: #888;
+} */
+
+.articles-titles{
+  display: block;
+  justify-content: center; /* center horizontally */
+  align-items: center; /* center vertically (if container has height) */
+  height: 10vh; 
+  border: 2px solid;
+}
+
+.nav-list {
+  border: 2px solid;
+}
+
+.article-list-item {
+  list-style: none;
+}
+
+.nav-list {
+  list-style: none
+}
+
+.parent {
+  display: flex;
+  justify-content: center; /* center horizontally */
+  align-items: center; /* center vertically (if container has height) */
+  height: 50vh; /* optional height as needed - this example makes the container fill the full viewport height*/
+}
+
+.article-card {
+  display: display flex;
+  justify-content: center; /* center horizontally */
+  align-items: center; /* center vertically (if container has height) */
+  height: 30vh; 
+  border: 2px solid;
+}
+
+.article-img {
+  padding: 10px;
+  display:list-item
+}
+
+.article-topic {
+  padding: 10px;
 }
