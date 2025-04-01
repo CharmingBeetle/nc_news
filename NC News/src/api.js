@@ -13,5 +13,13 @@ function getArticles() {
 }
 
 
+function getArticleById(article_id) {
+    return api.get(`/articles/${article_id}`).then(({data:{article}})=> {
+        console.log(article)
+        return article
+        
+    })
+}
 
-export { getArticles }
+
+export { getArticles, getArticleById }

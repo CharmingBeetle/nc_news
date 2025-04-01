@@ -1,4 +1,4 @@
-import axios from "axios"
+
 import { getArticles } from "../api"
 import { useState, useEffect } from "react"
 import ArticleCard from "./ArticleCard"
@@ -24,15 +24,20 @@ function ArticlesList() {
     if(isLoading) return <span>Loading...</span>;
     if(error) return <span>Something went wrong!</span>
 
+
+
+
+
+
     return (
         <section className="articles-titles">
             <h2>Articles List</h2>
-            <ul className="article-list">
+          
                 {articles.map((article)=> {
                     return <ArticleCard article={article} key={article.article_id}/>
+                  
                 })}
-            </ul>
-            
+          
         </section>
 
     )
