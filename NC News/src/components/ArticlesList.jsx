@@ -4,7 +4,6 @@ import { useState, useEffect } from "react"
 import ArticleCard from "./ArticleCard"
 
 
-
 function ArticlesList() {
     const [articles, setArticles] = useState([])
     const [isLoading, setIsLoading] = useState(true)
@@ -23,10 +22,6 @@ function ArticlesList() {
 
     if(isLoading) return <span>Loading...</span>;
     if(error) return <span>Something went wrong!</span>
-
-
-
-
 
 
     return (

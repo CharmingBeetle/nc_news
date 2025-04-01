@@ -1,8 +1,8 @@
 import { getArticleById } from "../api";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import ArticleComments from "./CommentsList";
 import ArticleUpvote from "./ArticleUpvote";
+import CommentsList from "./CommentsList";
 
 function SingleArticle() {
   const { article_id } = useParams();
@@ -35,40 +35,45 @@ function SingleArticle() {
 
   if (isLoading) return <span>Loading...</span>;
   if (error) return <span>Something went wrong!</span>;
+  if(!article) return <span>No article found!</span>
 
 
   return (
     <>
       <article className="single-article">
+      <h1 className="full-article-title">{article.title}</h1><br />
         <div className="article-img-container">
           <img
             className="full-article-img"
             src={article.article_img_url}
             alt={`${article.title}`}
           />
-        </div>
-        <h1 className="full-article-title">{article.title}</h1>
-        <h2 className="full-article-author">{article.author}</h2>
+        </div> <br />
         <p className="full-article-body">{article.body}</p>
+      
+            <h2 className="full-article-author">{article.author}</h2><br />
+            <span className="full-article-timestamp">
+                Created: {`${article.created_at.slice(0,10)} at ${article.created_at.slice(11,16)} `}
+            </span><br />
+            <span className="full-article-commentcount">
+                Comments: {article.comment_count}
+            </span><br />
+          
         <ArticleUpvote
         article_id = {article_id}
           articleVotes={article.votes}
         />
+        <hr />
+    
+        
+
 
         {/* COMMENTS */}
         <section>
-          <span className="full-article-commentcount">
-            Comments: {article.comment_count}
-          </span>
+        <CommentsList article={article} article_id={article_id} />
         </section>
-        <section>
-          <span className="full-article-timestamp">
-            Created: {`${article.created_at.slice(0,10)} at ${article.created_at.slice(11,16)} `}
-          </span>
-          <br />
-        </section> <br />
-        <ArticleComments article_id={article_id} />
       </article>
+      
     </>
   );
 }

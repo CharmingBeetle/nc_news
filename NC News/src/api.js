@@ -33,5 +33,28 @@ function updateArticleVote(article_id) {
     })
 }
 
+function postComment(article_id, commentData) {
+    return api.post(`/articles/${article_id}/comments`, {
+        username: commentData.username,
+        body: commentData.body
+      }).then(({data: {newComment}})=> {
+        console.log(newComment)
+        return newComment
+      })
+}
 
-export { getArticles, getArticleById, getCommentsByArticleId, updateArticleVote  }
+function getUsers() {
+    return api.get("/users").then(({data})=> {
+        return data.users
+    })
+}
+
+function getUserByUsername(username){
+    return api.get(`/users/${username}`).then(({data:{user}})=> {
+        console.log(user)
+        return user
+    })
+}
+
+
+export { getArticles, getArticleById, getCommentsByArticleId, updateArticleVote, postComment, getUsers, getUserByUsername }
