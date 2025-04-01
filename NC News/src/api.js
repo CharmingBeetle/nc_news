@@ -15,7 +15,6 @@ function getArticles() {
 
 function getArticleById(article_id) {
     return api.get(`/articles/${article_id}`).then(({data:{article}})=> {
-        console.log(article)
         return article
         
     })
@@ -23,10 +22,16 @@ function getArticleById(article_id) {
 
 function getCommentsByArticleId(article_id) {
     return api.get(`/articles/${article_id}/comments`).then(({data})=> {
-        console.log(data.comments)
         return data.comments
     })
 }
 
+function updateArticleVote(article_id) {
+    return api.patch(`/articles/${article_id}`, {inc_votes:1 }).then(({data:{article}})=> {
+        console.log(article.votes)
+        return article.votes
+    })
+}
 
-export { getArticles, getArticleById, getCommentsByArticleId }
+
+export { getArticles, getArticleById, getCommentsByArticleId, updateArticleVote  }

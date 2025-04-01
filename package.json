@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "react": "^19.1.0"
-  },
-  "devDependencies": {
-    "vite": "^6.2.4"
-  }
-}

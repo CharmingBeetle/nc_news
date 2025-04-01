@@ -50,9 +50,9 @@ function SingleArticle() {
         <h1 className="full-article-title">{article.title}</h1>
         <h2 className="full-article-author">{article.author}</h2>
         <p className="full-article-body">{article.body}</p>
-        <span className="full-article-votes">Likes: {article.votes}</span> <br />
         <ArticleUpvote
-          article={article}
+        article_id = {article_id}
+          articleVotes={article.votes}
         />
 
         {/* COMMENTS */}
