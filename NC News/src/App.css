@@ -3,53 +3,27 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-color: rgb(212, 201, 190);
 }
-/* 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-} */
 
 body {
-  color: white;
-  background-color: rgb(41, 41, 41);
+  color: rgb(18, 52, 88);
+  background-color: rgb(212, 201, 190);
 }
 
-
+button {
+  background-color: rgb(18, 52, 88);
+  margin: 1rem;
+}
 /* HOME PAGE */
+h1 {
+    color: rgb(18, 52, 88);
+    display: flex;
+    justify-content: center;
+    
+  };
 
-h2 {
+.welcome-msg {
   display: inline-flex;
   width: fit-content;
   justify-content: center;
@@ -58,6 +32,7 @@ h2 {
 }
 
 article.topic {
+  color:rgb(18, 52, 88);
   margin: 0;
 
 }
@@ -72,7 +47,6 @@ article.topic {
   display: inline-flex;
   list-style: none;
   align-items: center;
-  border: 2px solid;
   justify-content: center;
   margin-left: 30px;
   margin: 3rem;
@@ -81,6 +55,7 @@ article.topic {
 }
 
 li {
+  color: rgb(18, 52, 88);
   margin: 20px;
   align-items: center;
 }
@@ -91,7 +66,7 @@ li {
 .card-header {
   padding-bottom: 0;
   background-color: rgb(255, 255, 255);
-  color: black;
+  color:rgb(18, 52, 88);
 }
 
 section > .articles-titles{
@@ -116,18 +91,20 @@ section > .articles-titles{
 }
 
 .article-card {
-  color: rgb(255, 255, 255);
   margin: 20px;
   padding: 10px;
   display: inline-flexbox; 
   justify-content: center;  
   align-items: center; 
   width: 25rem;
-  height: 100vh; 
+  height: 80vh; 
   border-radius: 20px;
-  box-shadow: 1px 0px 10px black;
+  box-shadow: 1px 1px 20px rgba(18, 52, 88, 0.712);
 }
 
+.article-title {
+  margin-bottom: 0.5rem;
+}
 
 .article-img {
 height: 200px;  
@@ -143,8 +120,8 @@ display: inline;
 
 .article-author {
   border: none;
-  padding: 1rem;
-  margin: 1rem;
+  margin-top: 0.2rem;
+  margin-bottom: 3rem;
 }
 
 /* SINGLE ARTICLE */
@@ -158,25 +135,75 @@ padding: 5rem;
 }
 
 .article-img-container {
-  display: inline-flex;
-  width: 125px;
-  height: 168px;
-  overflow: hidden;
-  border-radius: 5px;
-  flex-shrink: 0;
-  margin-right: 19px;
+  display: flex;
+  width: 20rem;
+  height: 10rem;
+  margin-left: 5px;
+  margin-top: 0;
+}
+
+.full-article-img {
+  display: flex;
+  width: 20rem;
+  height: 10rem;
+  margin-left: 5px;
+  margin-top: 0;
 }
 
 .full-article-title {
-  font-size: 0.9rem;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.full-article-author {
+  font-size: 1rem;
   font-weight: 500;
 }
 
 
 /* COMMENTS */
 
-h3 {
+h3.article-author {
+  color: rgb(18, 52, 88);
   display: flex;
   justify-content: center;
-  border: 2px solid;
+  
+}
+h3.article-topic {
+  color: rgb(18, 52, 88);
+  display: flex;
+  justify-content: center;
+  
+}
+
+.comment-list {
+  display: block;
+  justify-content: center;
+  height:auto;
+  h5, h6 {
+    text-align: right;
+  }
+}
+
+textarea.comment-input {
+  background-color: rgb(241, 239, 236);
+  color:  rgb(18, 52, 88) ;
+  width: 20rem;
+  height: 4rem;
+  padding: 1rem;
+}
+
+h4 {
+  margin: 2rem;
+  font-weight: 300;
+}
+
+fieldset {
+  display: block; 
+
+  margin: auto;
+  box-sizing: border-box;
+  padding: 3rem;
+  width: auto;
+  height: auto;
 }
