@@ -44,7 +44,7 @@ function SingleArticle() {
         <div className="article-img-container">
           <img
             className="full-article-img"
-            src={article.img_url}
+            src={article.article_img_url}
             alt={`${article.title}`}
           />
         </div>

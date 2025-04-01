@@ -100,7 +100,7 @@ section > .articles-titles{
   justify-content: center; /* center horizontally */
   align-items: center; /* center vertically (if container has height) */
   height: 10vh; 
-  border: 2px solid;
+  
 }
 
 .article-list-item {
@@ -123,23 +123,29 @@ section > .articles-titles{
   justify-content: center;  
   align-items: center; 
   width: 50rem;
-  height: 50vh; 
+  height: 100vh; 
   border-radius: 20px;
   box-shadow: 1px 0px 10px black;
 }
 
 
-article > .article-img {
-  display:flex;
-  justify-self: start;
-  width: 24px;
-  margin-right: 7px;
+.article-img {
+height: 200px;  
+width: 300px;
+display: inline;
 }
 
 .article-topic {
   padding: 10px;
+  border: none;
+  margin: 1rem;
 }
 
+.article-author {
+  border: none;
+  padding: 1rem;
+  margin: 1rem;
+}
 
 /* SINGLE ARTICLE */
 
