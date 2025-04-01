@@ -20,8 +20,6 @@ function App() {
           </>
         } 
         />
-        {/* <Route path="/articles" element={}/>  */}
-        {/* <Route path="/articles/post" element={<PostArticle />}/> */}
         <Route path="/articles/:article_id" element={
           <>
           <Header />
@@ -30,10 +28,6 @@ function App() {
           </>
           }
           />
-        {/* <Route path="/articles/:article_id/comments" element={<ArticleComments />}/> */}
-        {/* <Route path="/topics" element={<Topics />}/> */}
-        {/* <Route path="/users" element={<UsersList />}/> */}
-        {/* <Route path="/comments/:comment_id" element={<CommentCard />}/>  */}
        
     </Routes>
   )
