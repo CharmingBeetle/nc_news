@@ -20,11 +20,10 @@ function SingleArticle() {
 
     getArticleById(article_id)
       .then((article) => {
-        const loadedArticle = article.article || article;
-        if (!loadedArticle) {
+        if (!article) {
           setError(true);
         }
-        setArticle(loadedArticle);
+        setArticle(article);
         setError(null);
       })
       .catch((error) => {
@@ -68,7 +67,7 @@ function SingleArticle() {
           </span>
           <br />
         </section> <br />
-        <ArticleComments />
+        <ArticleComments article_id={article_id} />
       </article>
     </>
   );
