@@ -122,7 +122,7 @@ section > .articles-titles{
   display: inline-flexbox; 
   justify-content: center;  
   align-items: center; 
-  width: 50rem;
+  width: 25rem;
   height: 100vh; 
   border-radius: 20px;
   box-shadow: 1px 0px 10px black;
@@ -153,6 +153,8 @@ display: inline;
 display: flexbox;
 justify-items: center;
 border: 2px solid;
+width: 30rem;
+padding: 5rem;
 }
 
 .article-img-container {
