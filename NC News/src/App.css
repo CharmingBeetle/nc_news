@@ -207,3 +207,33 @@ fieldset {
   width: auto;
   height: auto;
 }
+
+/* TOPICS */
+
+.topic-card {
+  width: 18rem;
+  height: 100%; /* Makes cards equal height in a row */
+}
+.topics-list {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  height: 60vh;
+}
+.topic-card-btn a {
+  color: white !important;
+  text-decoration: none !important;
+}
+
+.topic-card-btn:hover a {
+  color: white !important;
+}
+/* 
+ARTICLES BY TOPIC */
+
+.article-item {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  height: 60vh;
+}

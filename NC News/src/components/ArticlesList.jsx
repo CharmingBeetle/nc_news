@@ -9,6 +9,8 @@ function ArticlesList() {
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(false)
 
+   
+
 
     useEffect(()=> {
         setIsLoading(true)
@@ -26,7 +28,7 @@ function ArticlesList() {
 
     return (
         <section className="articles-titles">
-            <h2>Articles List</h2>
+            <h2>All Articles</h2>
           
                 {articles.map((article)=> {
                     return <ArticleCard article={article} key={article.article_id}/>
