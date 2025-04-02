@@ -63,6 +63,20 @@ function deleteComment(comment_id, commentData) {
     });
 }
 
+function getTopics(){
+    return api.get('/topics').then(({ data })=> {
+        return data.topics
+    })
+}
+
+function getArticlesByTopic(topic) {
+    return api.get(`/articles?topic=${topic}`).then(({ data: { articles } })=> {
+        console.log(articles)
+        return articles
+    })
+}
+
+
 export {
   getArticles,
   getArticleById,
@@ -72,4 +86,6 @@ export {
   getUsers,
   getUserByUsername,
   deleteComment,
+  getTopics, 
+  getArticlesByTopic
 };

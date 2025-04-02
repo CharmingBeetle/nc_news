@@ -1,13 +1,16 @@
 import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/Header'
 import ArticlesList from './components/ArticlesList'
 import Navbar from './components/Navbar'
+import Topics from './components/Topics'
 import { Routes, Route } from 'react-router'
 import SingleArticle from './components/SingleArticle'
 import PostComment from './components/PostComment'
 import UserList from './components/UserList'
 import UserCard from './components/UserCard'
 import { UserProvider } from './contexts/User'
+import ArticlesTopic from './components/ArticlesTopic'
 
 
 
@@ -25,6 +28,14 @@ function App() {
           </>
         } 
         />
+        <Route path="/articles" element={
+          <>
+          <Header />
+          <Navbar />
+          <ArticlesTopic />
+          </>
+          }
+          />
         <Route path="/articles/:article_id" element={
           <>
           <Header />
@@ -32,6 +43,12 @@ function App() {
           <SingleArticle />
           </>
           }
+          />
+          <Route path="/topics" element={
+            <>
+            <Topics />
+            </>
+            }
           />
           
           <Route path="/users" element={
