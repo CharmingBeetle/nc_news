@@ -51,10 +51,16 @@ function getUsers() {
 
 function getUserByUsername(username){
     return api.get(`/users/${username}`).then(({data:{user}})=> {
-        console.log(user)
         return user
     })
 }
 
+function deleteComment(comment_id, commentData) {
+    return api.delete(`/comments/${comment_id}`,{commentData} ).then(({data})=> {
+        return data
+    })
+}
 
-export { getArticles, getArticleById, getCommentsByArticleId, updateArticleVote, postComment, getUsers, getUserByUsername }
+
+
+export { getArticles, getArticleById, getCommentsByArticleId, updateArticleVote, postComment, getUsers, getUserByUsername, deleteComment }

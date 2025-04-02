@@ -10,7 +10,7 @@ function PostComment({ article, refreshComments }) {
   const [success, setSuccess] = useState(false)
   const { loggedInUser } = useContext(UserContext);
 
-  const handleSubmit =async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     if(!body) return
     setIsLoading(true);
@@ -40,7 +40,7 @@ function PostComment({ article, refreshComments }) {
   };
 
   console.log(body)
-  if(isLoading) return <span>Loading...</span>;
+  if(isLoading) return <span>Posting...</span>;
   if(error) return <span>Something went wrong!</span>
 
   return (
@@ -60,7 +60,6 @@ function PostComment({ article, refreshComments }) {
           <br />
           <button
             type="submit"
-  
             disabled={isLoading}
           >
             {isLoading ? 'Posting...':'Post Comment'}
@@ -68,6 +67,8 @@ function PostComment({ article, refreshComments }) {
         </fieldset>
         <br />
       </form>
+      {error && (<div className="post-cmt-success-msg">Error! Post failed.</div>
+      )}
       {success && (<div className="post-cmt-success-msg">Comment posted successfully!</div>
       )}
     </section>
