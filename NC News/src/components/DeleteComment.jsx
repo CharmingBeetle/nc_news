@@ -45,7 +45,8 @@ function DeleteComment({ commentAuthor,refreshComments, comment_id }) {
         onClick={handleDeleteComment} 
         disabled={isLoading}
         >{isLoading ? 'Deleting...':'Delete'}</button> : null)}
-      {success && (<div className="del-cmt-success-msg">Comment deleted!</div>
+        {error && (<span className="del-cmt-error-msg">Error! Deletion failed.</span>)}
+      {success && (<span className="del-cmt-success-msg">Comment deleted!</span>
       )}
     </div>
   );
