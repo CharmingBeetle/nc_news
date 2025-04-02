@@ -5,10 +5,17 @@
   text-align: center;
   background-color: rgb(212, 201, 190);
 }
+.parent {
+  display: flex;
+  justify-content: center; /* center horizontally */
+  align-items: center; /* center vertically (if container has height) */
+  height: 50vh; /* optional height as needed - this example makes the container fill the full viewport height*/
+}
 
 body {
   color: rgb(18, 52, 88);
-  background-color: rgb(212, 201, 190);
+  background: rgb(212, 201, 190);
+  
 }
 
 button {
@@ -24,10 +31,11 @@ h1 {
   };
 
 .welcome-msg {
-  display: inline-flex;
+  display: flex;
   width: fit-content;
   justify-content: center;
-  margin: 10px;
+  margin: 2rem;
+  padding: 2rem;
   text-align: center;
 }
 
@@ -36,74 +44,71 @@ article.topic {
   margin: 0;
 
 }
-.article-titles {
+.articles-title {
+  display: flex;
+  justify-content: centre;
+  align-items:center;
+  height: 50vh; 
   padding-bottom: 20px;
 
 }
 
 /* NAVBAR */
 
-.nav-list {
-  display: inline-flex;
-  list-style: none;
-  align-items: center;
-  justify-content: center;
-  margin-left: 30px;
-  margin: 3rem;
+ul.nav-list {
+  display: flex;
   padding: 0;
-  width: fit-content;
+  justify-content:space-evenly; 
+  height: 5rem; 
+  list-style:none;
 }
 
 li {
+  display: flex;
+  justify-content: center;
   color: rgb(18, 52, 88);
   margin: 20px;
-  align-items: center;
 }
 
 
 /* ARTICLE LIST */
-
-.card-header {
-  padding-bottom: 0;
-  background-color: rgb(255, 255, 255);
-  color:rgb(18, 52, 88);
+.article-card-btn a {
+  color: white !important;
+  text-decoration: none !important;
 }
 
-section > .articles-titles{
-  display: flex;
-  width: fit-content;
-  justify-content: center; /* center horizontally */
-  align-items: center; /* center vertically (if container has height) */
-  height: 10vh; 
-  
-}
+.article-card-btn:hover a {
+  color: white !important;
+} 
 
 .article-list-item {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  height: 60vh;
   list-style: none;
   padding: 20px;
 }
 
-.parent {
-  display: flex;
-  justify-content: center; /* center horizontally */
-  align-items: center; /* center vertically (if container has height) */
-  height: 50vh; /* optional height as needed - this example makes the container fill the full viewport height*/
-}
-
 .article-card {
+  width: 18rem;
+  height: 100%;
   margin: 20px;
   padding: 10px;
-  display: inline-flexbox; 
-  justify-content: center;  
+  display: flex;
+  justify-content: center;
   align-items: center; 
-  width: 25rem;
-  height: 80vh; 
   border-radius: 20px;
   box-shadow: 1px 1px 20px rgba(18, 52, 88, 0.712);
 }
 
 .article-title {
+  font-size: large;
   margin-bottom: 0.5rem;
+}
+
+h4 {
+  color: white;
 }
 
 .article-img {
@@ -113,16 +118,19 @@ display: inline;
 }
 
 .article-topic {
+  font-size: medium;
   padding: 10px;
   border: none;
   margin: 1rem;
 }
 
 .article-author {
+  font-size: medium;
   border: none;
   margin-top: 0.2rem;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 }
+
 
 /* SINGLE ARTICLE */
 
@@ -200,7 +208,6 @@ h4 {
 
 fieldset {
   display: block; 
-
   margin: auto;
   box-sizing: border-box;
   padding: 3rem;
@@ -212,7 +219,7 @@ fieldset {
 
 .topic-card {
   width: 18rem;
-  height: 100%; /* Makes cards equal height in a row */
+  height: 100%;
 }
 .topics-list {
   display: flex;
@@ -228,6 +235,7 @@ fieldset {
 .topic-card-btn:hover a {
   color: white !important;
 }
+
 /* 
 ARTICLES BY TOPIC */
 

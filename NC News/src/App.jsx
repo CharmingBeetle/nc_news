@@ -11,6 +11,7 @@ import UserList from './components/UserList'
 import UserCard from './components/UserCard'
 import { UserProvider } from './contexts/User'
 import ArticlesTopic from './components/ArticlesTopic'
+import SearchArticles from './components/SearchArticles';
 
 
 
@@ -19,51 +20,17 @@ function App() {
 
   return (
     <UserProvider>
+      <Header/>
+      <Navbar/>
       <Routes>
-        <Route path="/" element={
-          <>
-            <Header />
-            <Navbar />
-            <ArticlesList />
-          </>
-        } 
-        />
-        <Route path="/articles" element={
-          <>
-          <Header />
-          <Navbar />
-          <ArticlesTopic />
-          </>
-          }
-          />
-        <Route path="/articles/:article_id" element={
-          <>
-          <Header />
-          <Navbar />
-          <SingleArticle />
-          </>
-          }
-          />
-          <Route path="/topics" element={
-            <>
-            <Topics />
-            </>
-            }
-          />
-          
-          <Route path="/users" element={
-            <>
-            <UserList />
-            </>
-            }
-          />
-          <Route path="/users/:username" element={
-            <>
-            <UserCard />
-            </>
-            }
-          />
-       
+        <Route path="/" element={<ArticlesList />}/>
+        <Route path="/articles" element={<SearchArticles />}/>
+        <Route path="/articles/:article_id" element={<SingleArticle />}/>
+        <Route path="/articles/topic/:topic" element={<ArticlesTopic />}/>
+        <Route path="/topics" element={<Topics />}/>
+        
+        <Route path="/users" element={<UserList />}/>
+        <Route path="/users/:username" element={<UserCard />}/>
     </Routes>
     </UserProvider>
   )

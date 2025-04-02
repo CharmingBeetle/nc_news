@@ -76,6 +76,17 @@ function getArticlesByTopic(topic) {
     })
 }
 
+function getSortedArticles(sort_by = 'created_at', order = 'desc') {
+    return api.get('/articles', {
+      params: { sort_by, order }
+    })
+    .then(({ data: { articles } }) => articles)
+    .catch(err => {
+        console.error('API Error:', err.response?.data);
+        throw err;
+})
+}
+
 
 export {
   getArticles,
@@ -87,5 +98,6 @@ export {
   getUserByUsername,
   deleteComment,
   getTopics, 
-  getArticlesByTopic
+  getArticlesByTopic, 
+  getSortedArticles
 };
