@@ -3,9 +3,6 @@ import Card from 'react-bootstrap/Card';
 import { getTopics } from "../api";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import ArticlesTopic from './ArticlesTopic';
-import Header from './Header';
-import Navbar from './Navbar';
 import missingImg from '../assets/placeholder_img.png'
 
 function Topics() {
@@ -33,10 +30,7 @@ function Topics() {
 
 
   return (
-    <>
-    <Header/>
-    <Navbar/>
-    <section>
+<>
       {topics.map((topic) => {
           return (
             <section className='topics-list' key={topic.slug}>
@@ -47,17 +41,14 @@ function Topics() {
                 <Card.Text>
                   {topic.description}
                 </Card.Text>
-                <Button className="topic-card-btn" variant="primary"><Link to={`/articles?topic=${topic.slug}`}>Articles</Link></Button>
+                <Button className="topic-card-btn" variant="primary"><Link to={`/articles/topic/${topic.slug}`}>Articles</Link></Button>
               </Card.Body>
             </Card>
-           
              </section>
           );
         }
       )}
-    </section>
-    
-    </>
+      </>
   )
 
 }

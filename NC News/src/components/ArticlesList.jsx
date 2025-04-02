@@ -9,9 +9,6 @@ function ArticlesList() {
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(false)
 
-   
-
-
     useEffect(()=> {
         setIsLoading(true)
         setError(false)

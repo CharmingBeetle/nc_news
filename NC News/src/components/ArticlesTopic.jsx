@@ -1,20 +1,22 @@
-import { useSearchParams } from "react-router-dom";
 import { getArticlesByTopic } from "../api";
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { useParams } from "react-router";
+
 
 function ArticlesTopic() {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [searchParams] = useSearchParams();
-
-  const topic = searchParams.get("topic");
+  const { topic } = useParams();
 
   useEffect(() => {
-    if (!topic) return;
+    if (!topic) {
+        setIsLoading(false);
+        return;
+      }
 
     setIsLoading(true);
     setError(false);
@@ -33,8 +35,10 @@ function ArticlesTopic() {
   if (isLoading) return <span>Loading...</span>;
   if (error) return <span>Something went wrong!</span>;
 
+
   return (
     <section className="articles-topic">
+       
       <h2>Articles on {topic}</h2>
       <ul className="article-list">
         {articles.map((article) => {
