@@ -3,45 +3,43 @@ import { postComment } from "../api";
 import { UserContext } from "../contexts/User";
 
 function PostComment({ article, refreshComments }) {
-
   const [body, setBody] = useState("");
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [success, setSuccess] = useState(false)
+  const [success, setSuccess] = useState(false);
   const { loggedInUser } = useContext(UserContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if(!body) return
+    if (!body) return;
     setIsLoading(true);
     setError(null);
-    setSuccess(false)
+    setSuccess(false);
 
-   postComment(article.article_id, {
+    postComment(article.article_id, {
       body: body,
-      username: loggedInUser.username || "jessJelly"
+      username: loggedInUser.username || "jessJelly",
     })
-      .then(()=> { 
-      setBody("");
-        setSuccess(true)
-        refreshComments()
+      .then(() => {
+        setBody("");
+        setSuccess(true);
+        refreshComments();
       })
-    .catch((err)=>  {
+      .catch((err) => {
         setError("Post unsuccessful. Refresh page to try again.", err);
-        
       })
-      .finally(()=> {
+      .finally(() => {
         setIsLoading(false);
-    }) ;
+      });
   };
 
   const handlePostComment = (event) => {
     setBody(event.target.value);
   };
 
-  console.log(body)
-  if(isLoading) return <span>Posting...</span>;
-  if(error) return <span>Something went wrong!</span>
+  console.log(body);
+  if (isLoading) return <span>Posting...</span>;
+  if (error) return <span>Something went wrong!</span>;
 
   return (
     <section>
@@ -58,18 +56,15 @@ function PostComment({ article, refreshComments }) {
             />
           </label>
           <br />
-          <button
-            type="submit"
-            disabled={isLoading}
-          >
-            {isLoading ? 'Posting...':'Post Comment'}
+          <button type="submit" disabled={isLoading}>
+            {isLoading ? "Posting..." : "Post Comment"}
           </button>
         </fieldset>
         <br />
       </form>
-      {error && (<div className="post-cmt-success-msg">Error! Post failed.</div>
-      )}
-      {success && (<div className="post-cmt-success-msg">Comment posted successfully!</div>
+      {error && <span className="post-cmt-success-msg">Error! Post failed.</span>}
+      {success && (
+        <span className="post-cmt-success-msg">Comment posted successfully!</span>
       )}
     </section>
   );
