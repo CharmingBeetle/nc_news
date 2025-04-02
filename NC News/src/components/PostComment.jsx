@@ -10,7 +10,7 @@ function PostComment({ article, refreshComments }) {
   const [success, setSuccess] = useState(false)
   const { loggedInUser } = useContext(UserContext);
 
-  const handleSubmit =async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     if(!body) return
     setIsLoading(true);

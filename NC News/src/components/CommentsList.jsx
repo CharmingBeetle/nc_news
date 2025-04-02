@@ -2,6 +2,7 @@ import { getCommentsByArticleId } from "../api"
 import { useState, useEffect } from "react"
 import { Link } from "react-router"
 import PostComment from "./PostComment"
+import DeleteComment from "./DeleteComment"
 
 
 function CommentsList({article_id, article}) {
@@ -57,7 +58,11 @@ function CommentsList({article_id, article}) {
                         <h5>Votes: {comment.votes}</h5>
                         <h6>Created: {`${comment.created_at.slice(0,10)} at ${comment.created_at.slice(11,16)}`}</h6>
                         <button className="comment-like-btn">Like</button>
-                    
+                        <DeleteComment 
+                        commentAuthor={comment.author}
+                        comment_id={comment.comment_id}
+                        refreshComments={refreshComments}
+                        />
                         <hr />
                      </div>
                      
