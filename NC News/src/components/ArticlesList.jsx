@@ -29,6 +29,7 @@ function ArticlesList() {
     if(error) return <span>Something went wrong!</span>
 
 
+
     return (
         <section className="articles-titles">
             <h2>{topic ? `Articles on ${topic.toUpperCase()}` :"All Articles"}</h2>

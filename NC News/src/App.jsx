@@ -6,12 +6,10 @@ import Navbar from './components/Navbar'
 import Topics from './components/Topics'
 import { Routes, Route } from 'react-router'
 import SingleArticle from './components/SingleArticle'
-import PostComment from './components/PostComment'
 import UserList from './components/UserList'
 import UserCard from './components/UserCard'
 import { UserProvider } from './contexts/User'
-import ArticlesTopic from './components/ArticlesTopic'
-import SearchArticles from './components/SearchArticles';
+import ArticleSort from './components/SearchArticles';
 
 
 
@@ -22,18 +20,15 @@ function App() {
     <UserProvider>
       <Header/>
       <Navbar/>
+   
       <Routes>
-        <Route path="/" element={<ArticlesList />}/>
-
+        <Route path="/" element={<ArticlesList />}/> 
         <Route path="/articles">
           <Route index element={<ArticlesList />}/>
-          <Route index element={<SearchArticles />}/>
           <Route path=":article_id" element={<SingleArticle />}/>
         </Route>
-
-        {/* <Route path="/articles/topic/:topic" element={<ArticlesTopic />}/> */}
+        <Route path="articles/search" element={<ArticleSort />}/>
         <Route path="/topics" element={<Topics />}/>
-        
         <Route path="/users" element={<UserList />}/>
         <Route path="/users/:username" element={<UserCard />}/>
     </Routes>

@@ -12,7 +12,7 @@ function Navbar() {
                 <li><Link to="/articles">Articles</Link></li>
                 <li> <Link to='/topics'>Topics</Link></li>
                 <li><Link to="/users">Users</Link></li>
-                <li><Link to="/articles?sort_by=created_at&order=desc">Search Articles</Link></li>
+                <li><Link to="/articles/search">Search Articles</Link></li>
                
             </ul>
         </nav>
