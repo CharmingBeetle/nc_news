@@ -41,7 +41,7 @@ function Topics() {
                 <Card.Text>
                   {topic.description}
                 </Card.Text>
-                <Button className="topic-card-btn" variant="primary"><Link to={`/articles/topic/${topic.slug}`}>Articles</Link></Button>
+                <Button className="topic-card-btn" variant="primary"><Link to={`/articles?topic=${topic.slug}`}>Articles</Link></Button>
               </Card.Body>
             </Card>
              </section>

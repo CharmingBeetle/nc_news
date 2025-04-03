@@ -24,9 +24,14 @@ function App() {
       <Navbar/>
       <Routes>
         <Route path="/" element={<ArticlesList />}/>
-        <Route path="/articles" element={<SearchArticles />}/>
-        <Route path="/articles/:article_id" element={<SingleArticle />}/>
-        <Route path="/articles/topic/:topic" element={<ArticlesTopic />}/>
+
+        <Route path="/articles">
+          <Route index element={<ArticlesList />}/>
+          <Route index element={<SearchArticles />}/>
+          <Route path=":article_id" element={<SingleArticle />}/>
+        </Route>
+
+        {/* <Route path="/articles/topic/:topic" element={<ArticlesTopic />}/> */}
         <Route path="/topics" element={<Topics />}/>
         
         <Route path="/users" element={<UserList />}/>
