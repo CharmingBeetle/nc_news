@@ -11,7 +11,7 @@ function UserList() {
 
     useEffect(()=> {
         setIsLoading(true)
-        setError(false)
+        setError(null)
 
         getUsers().then((userData)=> {
             setUserList(userData)
@@ -26,7 +26,7 @@ function UserList() {
         <section>
             <h1>Users List</h1>
             {userList.map(user => {
-            return <UserCard username={user.username}/>
+            return <UserCard username={user.username} key={user.username}/>
         })
     }
         </section>

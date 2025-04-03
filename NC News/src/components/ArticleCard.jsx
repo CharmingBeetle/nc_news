@@ -17,8 +17,8 @@ function ArticleCard({ article }) {
           </Link>
         </Card.Title>
         <Card.Text>
-          <h3 className="article-author">- {article.author}</h3>
-          <h3 className="article-topic">{article.topic}</h3>
+          <p className="article-author"> - {article.author}</p>
+          <p className="article-topic">{article.topic}</p>
         </Card.Text>
         <Button className="article-card-btn" variant="primary">
           <Link to={`/articles/${article.article_id}`}>

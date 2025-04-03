@@ -3,38 +3,42 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ArticleUpvote from "./ArticleUpvote";
 import CommentsList from "./CommentsList";
+import Error from "../error_handling/Error";
 
 function SingleArticle() {
   const { article_id } = useParams();
   const [article, setArticle] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (!article_id) {
-      setError(new Error("missing article id"));
+    if(!article_id) {
+      setError({ status:400, msg:"Missing article id" });
       setIsLoading(false);
-      return;
+      return
     }
 
     getArticleById(article_id)
       .then((article) => {
         if (!article) {
-          setError(true);
+          setIsLoading(true)
+          setError({ status: 404, msg: "Article not found" });
         }
         setArticle(article);
+        setIsLoading(false)
         setError(null);
       })
       .catch((error) => {
-        console.log(error);
-        setError(true);
+        const status =error.response.status || 500
+        setError({status: status,
+          msg: status === 404 ? "Article not found" : "Bad request"});
       })
       .finally(() => setIsLoading(false));
   }, [article_id]);
 
   if (isLoading) return <span>Loading...</span>;
-  if (error) return <span>Something went wrong!</span>;
-  if (!article) return <span>No article found!</span>;
+  if (error) return <Error status={error.status} msg={error.msg}/>;
+  if (!article) return <Error status={404} msg="Article not found" />;
 
   return (
     <>

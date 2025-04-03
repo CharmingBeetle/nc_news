@@ -48,7 +48,7 @@ function CommentsList({article_id, article}) {
 
     return (
         <section className="comments-section">
-            <PostComment article={article} refreshComments={refreshComments}/>
+            <PostComment article={article} refreshComments={refreshComments}/><br />
             <h3>Comments for this article:</h3>
             
             {comments.map(comment=> (
