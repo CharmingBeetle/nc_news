@@ -58,11 +58,11 @@ function getUserByUsername(username) {
   });
 }
 
-function deleteComment(comment_id, commentData) {
+function deleteComment(comment_id) {
   return api
-    .delete(`/comments/${comment_id}`, { commentData })
-    .then(({ data }) => {
-      return data;
+    .delete(`/comments/${comment_id}`, {})
+    .then(() => {
+      return ;
     });
 }
 

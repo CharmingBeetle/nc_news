@@ -36,7 +36,7 @@ function CommentsList({article_id, article}) {
         }).catch((err)=> {
             setError(err)
             setIsLoading(false)
-        })
+                    })
         
     },[article_id, refresh])
 
