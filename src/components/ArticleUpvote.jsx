@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { updateArticleVote } from "../api";
 
 function ArticleUpvote({ articleVotes, article_id }) {
@@ -6,17 +6,22 @@ function ArticleUpvote({ articleVotes, article_id }) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
+  const isVoting = useRef(false);
 
   const handleArticleUpvote = async () => {
+    if(isVoting.current) return;
+
+    isVoting.current = true;
     setIsLoading(true);
-    setError(false);
-    setSuccess(false);
 
     setOptimisticVote((currOptimisticVote) => currOptimisticVote + 1);
 
     try {
       await updateArticleVote(article_id);
       setSuccess(true);
+      setTimeout(() => {
+        setSuccess(false);
+      }, 2000);
     } catch (err) {
       setError("Error. Vote not recorded.", err);
       setOptimisticVote((currOptimisticVote) => currOptimisticVote - 1);

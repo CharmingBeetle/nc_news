@@ -1,13 +1,14 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useRef } from "react";
 import { postComment } from "../api";
 import { UserContext } from "../contexts/User";
 
-function PostComment({ article, refreshComments }) {
+function PostComment({ article, comments, setComments }) {
   const [body, setBody] = useState("");
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const { loggedInUser } = useContext(UserContext);
+  const textareaRef = useRef(null);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -22,17 +23,42 @@ function PostComment({ article, refreshComments }) {
       return;
     }
 
+    const optimisticComment = {
+      comment_id: 123456789,
+      body,
+      author: loggedInUser.username,
+      votes: 0,
+      created_at: new Date().toISOString(),
+    };
+
+    setComments([optimisticComment, ...comments]);
+    setBody("");
+
     postComment(article.article_id, {
       body: body,
       username: loggedInUser.username,
     })
-      .then(() => {
-        setBody("");
+      .then((newComment) => {
+        setComments((prevComments) =>
+          prevComments.map((comment) =>
+            comment.comment_id === optimisticComment.comment_id
+              ? newComment
+              : comment
+          )
+        );
         setSuccess(true);
-        refreshComments();
+        setTimeout(() => {
+          setSuccess(false);
+        }, 2000);
+        textareaRef.current.focus();
       })
       .catch((error) => {
-        console.error(error);
+        setComments((prevComments) =>
+          prevComments.filter(
+            (comment) => comment.comment_id !== optimisticComment.comment_id
+          )
+        );
+
         const status = error.response.status || 500;
         let errorMsg = "Failed to post comment";
 
@@ -64,6 +90,7 @@ function PostComment({ article, refreshComments }) {
           <legend className="comment-legend"> Share your thoughts</legend>
           <label>
             <textarea
+              ref={textareaRef}
               className="comment-input"
               value={body}
               onChange={handlePostComment}

@@ -1,6 +1,6 @@
 import { getCommentsByArticleId } from "../api"
 import { useState, useEffect } from "react"
-import { Link } from "react-router"
+import { Link } from "react-router-dom"
 import PostComment from "./PostComment"
 import DeleteComment from "./DeleteComment"
 
@@ -10,12 +10,9 @@ function CommentsList({article_id, article}) {
     const [comments, setComments] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(false)
-    const [refresh, setRefresh] = useState(0)
 
-    const refreshComments=()=>{
-        setRefresh(prevRender => prevRender +1)
-    }
 
+    
     useEffect(()=> {
      
         if (!article_id) {
@@ -38,17 +35,19 @@ function CommentsList({article_id, article}) {
             setIsLoading(false)
                     })
         
-    },[article_id, refresh])
+    },[article_id])
 
 
     if(isLoading) return <span>Comments loading...</span>;
     if(error) return <span>Something went wrong!</span>
-
-   
+    if (comments.length === 0) return <span>No comments yet!</span>;
 
     return (
         <section className="comments-section">
-            <PostComment article={article} refreshComments={refreshComments}/><br />
+            <PostComment 
+            article={article} 
+            comments={comments} 
+            setComments={setComments}/><br />
             <h3>Comments for this article:</h3>
             
             {comments.map(comment=> (
@@ -61,7 +60,8 @@ function CommentsList({article_id, article}) {
                         <DeleteComment 
                         commentAuthor={comment.author}
                         comment_id={comment.comment_id}
-                        refreshComments={refreshComments}
+                        comments={comments}
+                        setComments={setComments}
                         />
                         <hr />
                      </div>
