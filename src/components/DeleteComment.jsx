@@ -1,29 +1,44 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useRef } from "react";
 import { deleteComment } from "../api";
 import { UserContext } from "../contexts/User";
 
-function DeleteComment({ commentAuthor, refreshComments, comment_id }) {
+function DeleteComment({ commentAuthor, comments, setComments, comment_id }) {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const { loggedInUser } = useContext(UserContext);
+  const isDeleting = useRef(false);
 
   const showDelete = loggedInUser.username === commentAuthor;
 
   const handleDeleteComment = (event) => {
     event.preventDefault();
-    if (!comment_id || !loggedInUser.username) return;
+    if (isDeleting.current) return;
+    isDeleting.current = true;
+    if (!comment_id) return;
+    if(!loggedInUser.username) return;
 
     setIsLoading(true);
     setError(null);
     setSuccess(false);
 
+    const deletedComment = comments.find(
+      (comment) => comment.comment_id === comment_id
+    );
+
+    setComments((previousComments) =>
+      previousComments.filter(
+        (comments) => comments.comment_id !== comment_id
+      )
+    );
+
     deleteComment(comment_id)
       .then(() => {
         setSuccess(true);
-        refreshComments();
       })
       .catch((err) => {
+        setComments((previousComments => [...previousComments, deletedComment])
+        );
         setError("Unable to delete comment", err);
       })
       .finally(() => {
@@ -37,7 +52,11 @@ function DeleteComment({ commentAuthor, refreshComments, comment_id }) {
   return (
     <div className="del-cmt">
       {showDelete ? (
-        <button className="cmt-del-btn" onClick={handleDeleteComment} disabled={isLoading}>
+        <button
+          className="cmt-del-btn"
+          onClick={handleDeleteComment}
+          disabled={isLoading}
+        >
           {isLoading ? "Deleting..." : "Delete"}
         </button>
       ) : null}
