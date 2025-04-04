@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { getSortedArticles } from "../api";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import Error from "../error_handling/Error";
 
 function ArticleSort() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -38,10 +39,14 @@ function ArticleSort() {
 
     getSortedArticles(sort_by, order)
       .then((articleData) => {
-        setArticles(articleData);
+        if(!articleData || articleData.length ===0) {
+            setError({status: 200, msg: "No articles found"})
+        }
+        setArticles(articleData || []);
       })
-      .catch((err) => {
-        setError("Failed to fetch articles", err);
+      .catch((error) => {
+        const status = error.response.status || 500
+        setError({status, msg: status === 400 ? "Invalid sort" : "failed to load articles"});
       })
       .finally(() => {
         setIsLoading(false);
@@ -49,7 +54,7 @@ function ArticleSort() {
   }, [sort_by, order]);
 
   if (isLoading) return <span>Loading...</span>;
-  if (error) return <span>Something went wrong!</span>;
+  if (error && error.status !==200) return <Error status={error.status} msg={error.msg} />;
 
   return (
     <>
@@ -69,10 +74,10 @@ function ArticleSort() {
           </button>
         </div>
       </div>
-
+        {error && error.status === 200 && (<div>{error.mgs}</div>)}
       <div className="articles-list">
         {articles.map((article) => (
-           <section key={article.article_id}>
+           <section className="sort-section" key={article.article_id}>
             <Card className="articles-list" style={{ width: "20rem" }}>
               <Card.Img
                 variant="top"
@@ -81,14 +86,12 @@ function ArticleSort() {
               <Card.Body>
                 <Card.Title>{article.title}</Card.Title>
                 <Card.Text>
-                 
                   <p>
                     By {article.author} | Topic: {article.topic}
                   </p>
                   <p>
                     Votes: {article.votes} | Comments: {article.comment_count}
                   </p>
-               
                 </Card.Text>
                 <Button variant="primary">Read</Button>
               </Card.Body>

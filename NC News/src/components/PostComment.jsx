@@ -11,22 +11,37 @@ function PostComment({ article, refreshComments }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (!body) return;
     setIsLoading(true);
     setError(null);
     setSuccess(false);
 
+    if (!body) {
+      setError({ status: 400, msg: "Comment cannot be empty" });
+      setIsLoading(false);
+      setSuccess(false);
+      return;
+    }
+
     postComment(article.article_id, {
       body: body,
-      username: loggedInUser.username || "jessJelly",
+      username: loggedInUser.username,
     })
       .then(() => {
         setBody("");
         setSuccess(true);
         refreshComments();
       })
-      .catch((err) => {
-        setError("Post unsuccessful. Refresh page to try again.", err);
+      .catch((error) => {
+        console.error(error);
+        const status = error.response.status || 500;
+        let errorMsg = "Failed to post comment";
+
+        if (status === 400) {
+          errorMsg = "Invalid comment. Try again.";
+        } else if (status === 404) {
+          errorMsg = "User not found in database";
+        }
+        setError({ status, msg: errorMsg });
       })
       .finally(() => {
         setIsLoading(false);
@@ -35,17 +50,18 @@ function PostComment({ article, refreshComments }) {
 
   const handlePostComment = (event) => {
     setBody(event.target.value);
+    if (error) {
+      setError(null);
+      setBody("");
+      setIsLoading(false);
+    }
   };
-
-  console.log(body);
-  if (isLoading) return <span>Posting...</span>;
-  if (error) return <span>Something went wrong!</span>;
 
   return (
     <section>
       <form onSubmit={handleSubmit} className="post-comment-form">
-        <fieldset>
-          <legend> Share your thoughts</legend>
+        <fieldset className="comment-fieldset">
+          <legend className="comment-legend"> Share your thoughts</legend>
           <label>
             <textarea
               className="comment-input"
@@ -56,18 +72,21 @@ function PostComment({ article, refreshComments }) {
             />
           </label>
           <br />
-          <button type="submit" disabled={isLoading}>
+          <button
+            className="post-comment-btn"
+            type="submit"
+            disabled={isLoading}
+          >
             {isLoading ? "Posting..." : "Post Comment"}
           </button>
         </fieldset>
-        <br />
       </form>
-      {error && <span className="post-cmt-success-msg">Error! Post failed.</span>}
+      {error && <div className="error-message">{error.msg}</div>}
+
       {success && (
-        <span className="post-cmt-success-msg">Comment posted successfully!</span>
+        <div className="post-cmt-success-msg">Comment posted successfully!</div>
       )}
     </section>
   );
 }
-
 export default PostComment;

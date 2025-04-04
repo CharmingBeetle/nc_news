@@ -17,23 +17,26 @@ function ArticlesList() {
         setIsLoading(true)
         setError(null)
       
-            getArticles(topic || null)
-            .then(setArticles)
-            .catch((err)=>{
-                setError("Something went wrong!", err)
+            getArticles(topic || undefined)
+            .then((articles)=> {
+                setArticles(articles || [])
+                setError(false)
+            })
+            .catch((error)=>{
+                console.log(error)
             })
             .finally(()=> setIsLoading(false))
             },[topic])
 
     if(isLoading) return <span>Loading...</span>;
-    if(error) return <span>Something went wrong!</span>
+    if(error) return <Error status={error.status} msg={error.msg} />;
 
 
 
     return (
         <section className="articles-titles">
             <h2>{topic ? `Articles on ${topic.toUpperCase()}` :"All Articles"}</h2>
-          
+            {articles.length ===0 && (<div>{topic ? `No articles found for ${topic}` : "No articles available"}</div>)}
                 {articles.map((article)=> {
                     return <ArticleCard article={article} key={article.article_id}/>
                   

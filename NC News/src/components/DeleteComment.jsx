@@ -37,7 +37,7 @@ function DeleteComment({ commentAuthor, refreshComments, comment_id }) {
   return (
     <div className="del-cmt">
       {showDelete ? (
-        <button onClick={handleDeleteComment} disabled={isLoading}>
+        <button className="cmt-del-btn" onClick={handleDeleteComment} disabled={isLoading}>
           {isLoading ? "Deleting..." : "Delete"}
         </button>
       ) : null}
