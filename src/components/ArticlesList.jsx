@@ -3,6 +3,8 @@ import { getArticles } from "../api"
 import { useState, useEffect } from "react"
 import ArticleCard from "./ArticleCard"
 import { useSearchParams } from "react-router-dom"
+import animation from "../assets/animation.json"
+import Lottie from "lottie-react"
 
 
 function ArticlesList() {
@@ -11,6 +13,7 @@ function ArticlesList() {
     const [error, setError] = useState(false)
     const [searchParams] = useSearchParams()
     const topic = searchParams.get("topic")
+    
 
     useEffect(()=> {
     
@@ -28,7 +31,7 @@ function ArticlesList() {
             .finally(()=> setIsLoading(false))
             },[topic])
 
-    if(isLoading) return <span>Loading...</span>;
+    if(isLoading) return <Lottie animationData={animation} loop={true} autoplay={true} className="loading-animation" />;
     if(error) return <Error status={error.status} msg={error.msg} />;
 
 

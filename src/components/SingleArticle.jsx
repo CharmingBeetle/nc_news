@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import ArticleUpvote from "./ArticleUpvote";
 import CommentsList from "./CommentsList";
 import Error from "../error_handling/Error";
+import animation from "../assets/animation.json"
+import Lottie from "lottie-react"
 
 function SingleArticle() {
   const { article_id } = useParams();
@@ -36,7 +38,7 @@ function SingleArticle() {
       .finally(() => setIsLoading(false));
   }, [article_id]);
 
-  if (isLoading) return <span>Loading...</span>;
+  if (isLoading) return <Lottie animationData={animation} loop={true} autoplay={true} className="loading-animation" />;;
   if (error) return <Error status={error.status} msg={error.msg}/>;
   if (!article) return <Error status={404} msg="Article not found" />;
 
@@ -56,6 +58,7 @@ function SingleArticle() {
         <p className="full-article-body">{article.body}</p>
         <h2 className="full-article-author">{article.author}</h2>
         <br />
+        <section className="full-article-metrics">
         <span className="full-article-timestamp">
           Created:{" "}
           {`${article.created_at.slice(0, 10)} at ${article.created_at.slice(
@@ -70,6 +73,8 @@ function SingleArticle() {
         <br />
         <ArticleUpvote article_id={article_id} articleVotes={article.votes} />
         <hr />
+        </section>
+
         {/* COMMENTS */}
         <section>
           <CommentsList article={article} article_id={article_id} />

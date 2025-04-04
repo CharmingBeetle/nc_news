@@ -2,6 +2,9 @@
   margin: 0;
   padding: 0; 
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
 }
 
 #root {
@@ -22,6 +25,7 @@
 body {
   color: rgb(18, 52, 88);
   background-color: rgb(212, 201, 190) !important;
+  
 }
 
 button {
@@ -35,11 +39,11 @@ header {
   padding: 0;
 }
 h1 {
-    padding: 3rem;
-    background-color: ;
-    color: rgb(18, 52, 88) !important;
-    display: block;
-    justify-content: center;
+  padding: 3rem;
+  background-color: ;
+  color: rgb(18, 52, 88) !important;
+  display: block;
+  justify-content: center;
     
   };
 
@@ -63,12 +67,17 @@ article.topic {
   align-items:center;
   height: 50vh; 
   padding-bottom: 20px;
-
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
 }
 
 /* NAVBAR */
 
 ul.nav-list {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
   display: flex;
   padding: 0;
   justify-content:space-evenly; 
@@ -151,6 +160,7 @@ display: inline;
   display: flex;
   align-items: end;
   font-size: medium;
+  font-weight: 300;
 }
 .single-article {
 display: flexbox;
@@ -178,7 +188,7 @@ padding: 2rem;
 
 .full-article-title {
   font-size: 2rem;
-  font-weight: 500;
+  font-weight: 600;
   padding: 1rem;
 }
 
@@ -187,6 +197,9 @@ padding: 2rem;
   font-weight: 500;
 }
 
+.full-article-metrics {
+  font-weight: 100;
+}
 
 /* COMMENTS */
 
@@ -213,7 +226,7 @@ h3.article-topic {
     text-align: right;
   }
   h4 {
-    font-size: small;
+    font-size: medium;
     font-weight: 300;
   }
 
@@ -292,4 +305,21 @@ ARTICLES BY TOPIC */
   align-items: center; 
   height: 60vh;
   margin: 5rem;
+}
+
+
+/* LOADING ANIMATION */
+.loading-animation {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  height: 60vh;
+}
+.loading-animation img {
+  width: 30px;
+  height: 30px;
+}
+.loading-animation h2 {
+  color: rgb(18, 52, 88);
+  font-size: 2rem;
 }

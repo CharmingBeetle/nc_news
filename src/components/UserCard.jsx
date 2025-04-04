@@ -3,6 +3,8 @@ import Card from "react-bootstrap/Card";
 import { UserContext } from "../contexts/User";
 import { useContext, useEffect, useState } from "react";
 import { getUserByUsername } from "../api";
+import animation from "../assets/animation.json";
+import Lottie from "lottie-react";
 
 function UserCard({ username }) {
   const { loggedInUser } = useContext(UserContext);
@@ -25,7 +27,7 @@ function UserCard({ username }) {
       .finally(() => setIsLoading(false));
   }, [username, loggedInUser]);
 
-  if (isLoading) return <div>Loading user...</div>;
+  if (isLoading) return <Lottie animationData={animation} loop={true} autoplay={true} className="loading-animation" />;;
   if (error) return <div>{error}</div>;
   if (!userData) return <div>User not found</div>;
 

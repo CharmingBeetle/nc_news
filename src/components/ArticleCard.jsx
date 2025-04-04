@@ -17,7 +17,7 @@ function ArticleCard({ article }) {
           </Link>
         </Card.Title>
         <Card.Text>
-          <p className="article-author"> - {article.author}</p>
+          <p className="article-author"> by {article.author}</p>
           <p className="article-topic">{article.topic}</p>
         </Card.Text>
         <Button className="article-card-btn" variant="primary">

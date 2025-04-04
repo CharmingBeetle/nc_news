@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react"
 import { getUsers } from "../api"
 import UserCard from "./UserCard"
+import animation from "../assets/animation.json"
+import Lottie from "lottie-react"
+import { Link } from "react-router-dom"
 
 function UserList() {
 
@@ -19,7 +22,7 @@ function UserList() {
         })
     },[])
 
-    if(isLoading) return <span>Loading...</span>;
+    if(isLoading) return <Lottie animationData={animation} loop={true} autoplay={true} className="loading-animation" />;;
     if(error) return <span>Something went wrong!</span>
     
     return (

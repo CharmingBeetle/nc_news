@@ -4,6 +4,8 @@ import { Link } from "react-router-dom"
 import PostComment from "./PostComment"
 import DeleteComment from "./DeleteComment"
 
+import Lottie from "lottie-react"
+import animation from "../assets/animation.json"
 
 function CommentsList({article_id, article}) {
 
@@ -38,7 +40,7 @@ function CommentsList({article_id, article}) {
     },[article_id])
 
 
-    if(isLoading) return <span>Comments loading...</span>;
+    if(isLoading) return <Lottie animationData={animation} loop={true} autoplay={true} className="loading-animation" />;
     if(error) return <span>Something went wrong!</span>
     if (comments.length === 0) return <span>No comments yet!</span>;
 

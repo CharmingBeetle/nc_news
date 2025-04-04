@@ -4,6 +4,8 @@ import { getSortedArticles } from "../api";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Error from "../error_handling/Error";
+import animation from "../assets/animation.json"
+import Lottie from "lottie-react"
 
 function ArticleSort() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -53,7 +55,7 @@ function ArticleSort() {
       });
   }, [sort_by, order]);
 
-  if (isLoading) return <span>Loading...</span>;
+  if (isLoading) return <Lottie animationData={animation} loop={true} autoplay={true} className="loading-animation" />;
   if (error && error.status !==200) return <Error status={error.status} msg={error.msg} />;
 
   return (

@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import missingImg from "../assets/placeholder_img.png";
 import Error from "../error_handling/Error";
+import animation from "../assets/animation.json";
+import Lottie from "lottie-react";
 
 function Topics() {
   const [topics, setTopics] = useState([]);
@@ -30,7 +32,7 @@ function Topics() {
       .finally(() => setIsLoading(false));
   }, []);
 
-  if (isLoading) return <div>Loading topics...</div>;
+  if (isLoading) return <Lottie animationData={animation} loop={true} autoplay={true} className="loading-animation" />;;
   if (error && error.status !==200) return <Error status={error.status} msg={error.msg} />;
   if (! error && topics.length === 0) return <Error status={404} msg="Topics not found" />;
 
