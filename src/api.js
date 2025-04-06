@@ -90,6 +90,14 @@ function getSortedArticles(sort_by = 'created_at', order = 'desc') {
 })
 }
 
+function updateCommentVotes(comment_id) {
+  return api
+  .patch(`/comments/${comment_id}`, { inc_votes: 1 })
+  .then(({ data: { comment } }) => {
+    console.log(comment.votes);
+    return comment.votes;
+  });
+}
 
 export {
   getArticles,
@@ -102,5 +110,6 @@ export {
   deleteComment,
   getTopics, 
   getArticlesByTopic, 
-  getSortedArticles
+  getSortedArticles,
+  updateCommentVotes
 };

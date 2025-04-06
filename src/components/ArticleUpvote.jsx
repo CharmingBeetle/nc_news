@@ -30,7 +30,7 @@ function ArticleUpvote({ articleVotes, article_id }) {
     }
   };
 
-  if (isLoading) return <span>Loading...</span>;
+  if (isLoading) return <span>"💭..."</span>;
   if (error) return <span>Something went wrong!</span>;
 
   return (
@@ -41,7 +41,7 @@ function ArticleUpvote({ articleVotes, article_id }) {
       <br />
       <span>
         <button onClick={handleArticleUpvote} disabled={isLoading}>
-          {isLoading ? "Voting..." : "Like 👍"}
+          {isLoading ? "💭..." : "Like 👍"}
         </button>
         {success && (
           <div className="article-success-vote">Thanks for your feedback.</div>

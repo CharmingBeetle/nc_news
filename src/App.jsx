@@ -2,7 +2,7 @@ import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/Header'
 import ArticlesList from './components/ArticlesList'
-import Navbar from './components/Navbar'
+import NavBar from './components/NavBar'
 import Topics from './components/Topics'
 import { Routes, Route } from 'react-router'
 import SingleArticle from './components/SingleArticle'
@@ -20,7 +20,7 @@ function App() {
   return (
     <UserProvider>
       <Header/>
-      <Navbar/>
+      <NavBar/>
    
       <Routes>
         <Route path="*" element={<Error status={404} msg="Page not found" />} />

@@ -5,6 +5,8 @@ import { useContext, useEffect, useState } from "react";
 import { getUserByUsername } from "../api";
 import animation from "../assets/animation.json";
 import Lottie from "lottie-react";
+import Button from 'react-bootstrap/Button';
+
 
 function UserCard({ username }) {
   const { loggedInUser } = useContext(UserContext);
@@ -32,22 +34,35 @@ function UserCard({ username }) {
   if (!userData) return <div>User not found</div>;
 
   return (
-    <section className="user-card">
+  <section className="user-card">
+  
+   
+    <Card 
+    style={{ width: '18rem' }}>
       <Link to={`/users/${userData.username}`}>
-        <h2 className="username">{userData.username}</h2>
-      </Link>{" "}
-      <br />
-      <Link to={`/users/${userData.username}`}>
-        <img
+      <Card.Img 
           className="user-img"
           src={userData.avatar_url}
           alt={userData.name}
         />
-      </Link>{" "}
-      <br />
-      <h3 className="name">{userData.name}</h3>
-    </section>
-  );
+      </Link>
+      <Card.Body>
+        <Card.Title><Link to={`/users/${userData.username}`}>
+        <h2 className="username">{userData.username}</h2>
+      </Link></Card.Title>
+        <Card.Text className="name">
+        <h3 >{userData.name}</h3>
+        </Card.Text>
+        <Button className="user-list-btn" variant="primary">Profile</Button>
+      </Card.Body>
+    </Card>
+     
+</section>
+  )
 }
+
+
+
+
 
 export default UserCard;

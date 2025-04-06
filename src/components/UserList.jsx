@@ -26,13 +26,17 @@ function UserList() {
     if(error) return <span>Something went wrong!</span>
     
     return (
-        <section>
-            <h1>Users List</h1>
+        <>
+        <header>
+        <h1>Users List</h1>
+        </header>
+        <section className="user-list">
             {userList.map(user => {
             return <UserCard username={user.username} key={user.username}/>
         })
     }
         </section>
+        </>
     )
 }
 

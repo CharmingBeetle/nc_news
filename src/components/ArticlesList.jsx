@@ -37,15 +37,18 @@ function ArticlesList() {
 
 
     return (
+        <>
+        <header className="article-section-title">
+        <h2>{topic ? `Articles on ${topic.toUpperCase()}` :"All Articles"}</h2>
+        </header>
         <section className="articles-titles">
-            <h2>{topic ? `Articles on ${topic.toUpperCase()}` :"All Articles"}</h2>
             {articles.length ===0 && (<div>{topic ? `No articles found for ${topic}` : "No articles available"}</div>)}
                 {articles.map((article)=> {
                     return <ArticleCard article={article} key={article.article_id}/>
-                  
+                   
                 })}
-          
         </section>
+        </>
 
     )
 }

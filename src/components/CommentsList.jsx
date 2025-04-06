@@ -6,6 +6,7 @@ import DeleteComment from "./DeleteComment"
 
 import Lottie from "lottie-react"
 import animation from "../assets/animation.json"
+import CommentUpvote from "./CommentUpvote"
 
 function CommentsList({article_id, article}) {
 
@@ -56,9 +57,13 @@ function CommentsList({article_id, article}) {
                      <div className="comment-list" key={comment.comment_id}>
                         <h4>{comment.body}</h4>
                         <h5>User: {comment.author}</h5>
-                        <h5>Votes: {comment.votes}</h5>
+                        {/* <h5>Votes: {comment.votes}</h5> */}
+                        <CommentUpvote 
+                        commentVotes={comment.votes}
+                        comment_id={comment.comment_id}/>
+                        
                         <h6>Created: {`${comment.created_at.slice(0,10)} at ${comment.created_at.slice(11,16)}`}</h6>
-                        <button className="comment-like-btn">Like</button>
+                        
                         <DeleteComment 
                         commentAuthor={comment.author}
                         comment_id={comment.comment_id}
