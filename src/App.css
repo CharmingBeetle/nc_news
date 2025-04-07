@@ -364,6 +364,66 @@ hr {
   border-radius: 5px;
   cursor: pointer;
 }
+/* 
+.full-article-body {
+  position: relative;
+  padding-left: 1rem;
+}
+
+.full-article-body::before {
+  content: '✏️';
+  position: absolute;
+  left: -10px;
+  top: -5px;
+  font-size: 1.2rem;
+  opacity: 0.3;
+}
+
+/* 
+.full-article-body {
+  display: flex;
+  align-items: end;
+  font-size: medium;
+  font-weight: 300;
+}
+.single-article {
+display: flexbox;
+justify-items: center;
+border: 2px solid;
+width: 30rem;
+padding: 2rem;
+}
+
+.article-img-container {
+  display: flex;
+  width: 20rem;
+  height: 10rem;
+  margin-left: 5px;
+  margin-top: 0;
+}
+
+.full-article-img {
+  display: flex;
+  width: 20rem;
+  height: 10rem;
+  margin-left: 5px;
+  margin-top: 0;
+}
+
+.full-article-title {
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 1rem;
+}
+
+.full-article-author {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.full-article-metrics {
+  font-weight: 100;
+} */
 
 /* COMMENTS */
 
