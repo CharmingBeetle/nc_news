@@ -36,27 +36,25 @@ function UserCard({ username }) {
   return (
   <section className="user-card">
   
-   
+  <Link to={`/users/${userData.username}`}>
     <Card 
     style={{ width: '18rem' }}>
-      <Link to={`/users/${userData.username}`}>
+      
       <Card.Img 
           className="user-img"
           src={userData.avatar_url}
           alt={userData.name}
         />
-      </Link>
+      
       <Card.Body>
-        <Card.Title><Link to={`/users/${userData.username}`}>
-        <h2 className="username">{userData.username}</h2>
-      </Link></Card.Title>
+        <Card.Title>{userData.username}</Card.Title>
         <Card.Text className="name">
         <h3 >{userData.name}</h3>
         </Card.Text>
-        <Button className="user-list-btn" variant="primary">Profile</Button>
+       
       </Card.Body>
     </Card>
-     
+    </Link>
 </section>
   )
 }

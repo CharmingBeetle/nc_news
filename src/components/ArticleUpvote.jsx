@@ -40,7 +40,7 @@ function ArticleUpvote({ articleVotes, article_id }) {
       </span>{" "}
       <br />
       <span>
-        <button onClick={handleArticleUpvote} disabled={isLoading}>
+        <button className="article-vote-btn" onClick={handleArticleUpvote} disabled={isLoading}>
           {isLoading ? "💭..." : "Like 👍"}
         </button>
         {success && (

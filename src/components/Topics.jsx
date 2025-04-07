@@ -58,6 +58,7 @@ function Topics() {
       {topics.map((topic) => {
         return (
           <section className="topics-list" key={topic.slug}>
+            <Link to={`/articles?topic=${topic.slug}`}>Articles
             <Card className="topic-card">
               <Card.Img
               className="topic-card-img"
@@ -68,11 +69,10 @@ function Topics() {
               <Card.Body className="topic-card-body">
                 <Card.Title>{topic.slug.toUpperCase()}</Card.Title>
                 <Card.Text>{topic.description}</Card.Text>
-                <Button className="topic-card-btn" variant="primary">
-                  <Link to={`/articles?topic=${topic.slug}`}>Articles</Link>
-                </Button>
+               
               </Card.Body>
             </Card>
+            </Link>
           </section>
           
         );

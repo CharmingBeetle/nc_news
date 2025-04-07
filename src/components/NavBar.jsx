@@ -34,10 +34,11 @@ function NavBar() {
 
   return (
     <>
+  
       {['xl'].map((expand) => (
-        <Navbar key={expand} expand={expand} className="bg-body-tertiary mb-3">
+        <Navbar sticky={'top'} key={expand} expand={expand} className="bg-body-tertiary mb-3">
           <Container fluid>
-            <Navbar.Brand href="#">ThoughtBubble</Navbar.Brand>
+            <Navbar.Brand href="#" >ThoughtBubble</Navbar.Brand>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${expand}`}
@@ -46,26 +47,16 @@ function NavBar() {
             >
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                  Offcanvas
+                  Menu
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
                   <Nav.Link href="/">Home</Nav.Link>
                   <Nav.Link href="/articles">All Articles</Nav.Link>
-                  <NavDropdown
-                    title="Dropdown"
-                    id={`offcanvasNavbarDropdown-expand-${expand}`}
-                  >
-                    <NavDropdown.Item href="/topics">Topics</NavDropdown.Item>
-                    <NavDropdown.Item href="/users">
-                      Users
-                    </NavDropdown.Item>
-                   
-                    <NavDropdown.Item href="/articles/search">
-                      Sort Articles
-                    </NavDropdown.Item>
-                  </NavDropdown>
+                  <Nav.Link href="/articles/search">Sort Articles</Nav.Link>
+                  <Nav.Link href="/topics">Topics</Nav.Link>
+                  <Nav.Link href="/users">Users</Nav.Link>
                 </Nav>
                 <Form className="d-flex">
                   <Form.Control
@@ -74,13 +65,14 @@ function NavBar() {
                     className="me-2"
                     aria-label="Search"
                   />
-                  <Button variant="outline-success">Search</Button>
+                  <Button sixe={'sm'} variant="outline-success">Search</Button>
                 </Form>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
           </Container>
         </Navbar>
       ))}
+   
     </>
   );
 }
