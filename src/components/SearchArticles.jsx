@@ -83,8 +83,7 @@ function ArticleSort() {
       <section className="sort-section">
         <Form.Select
           className="dropdown-sort"
-          style={{ width: "30%" }}
-          size="lg"
+          style={{ width: "200px" }}
           name="sort_by"
           value={sort_by}
           onChange={setSortBy}
@@ -98,7 +97,7 @@ function ArticleSort() {
           <option value="comment_count">Comments</option>
         </Form.Select>
 
-        <Button type="input" size="lg" onClick={setSortOrder}>
+        <Button type="input" onClick={setSortOrder}>
           {order === "desc" ? "Desc" : "Asc"}
         </Button>
       </section>
