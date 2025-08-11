@@ -360,6 +360,25 @@ textarea.comment-input:focus {
   margin-top: 1rem;
   border-radius: 8px;
   background-color: #f9fafb;
+  text-align: center;
+}
+
+.comment-legend {
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.post-comment-form {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.post-comment-form fieldset {
+  width: 100%;
+  max-width: 600px;
 }
 
 .cmt-del-btn,
