@@ -4,7 +4,7 @@ import Card from "react-bootstrap/Card";
 
 function ArticleCard({ article }) {
   return (
-    <Card className="article-card" style={{ width: "25rem" }}>
+    <Card className="article-card">
       <Link to={`/articles/${article.article_id}`}>
             <h4 className="article-title"></h4>
          
